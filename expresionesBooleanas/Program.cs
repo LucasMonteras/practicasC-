@@ -1,9 +1,42 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿
+Random dice = new Random();
+
+int roll1 = dice.Next(1, 7);
+int roll2 = dice.Next(1, 7);
+int roll3 = dice.Next(1, 7);
+
+int total = roll1 + roll2 + roll3;
+
+Console.WriteLine($"Dice roll: {roll1} + {roll2} + {roll3} = {total}");
+
+/*"Si dos dados cualesquiera muestran el mismo valor, 
+se obtendrán dos puntos extra por obtener dobles"*/
+if ((roll1 == roll2) || (roll2 == roll3) || (roll1 == roll3))
+{
+    Console.WriteLine("¡Obtuviste dobles! ¡Bono +2 al total!");
+    total += 2;
+}
+
+
+// "Si los tres dados que tire muestran el mismo valor, 
+//obtendrá seis puntos extra por obtener un triple"
+if ((roll1 == roll2) && (roll2 == roll3)) 
+{
+    Console.WriteLine("¡Obtuviste triples! ¡Bono +6 al total!");
+    total += 6;
+}
 
 
 
+if (total >= 15)
+{
+    Console.WriteLine("Sos un campeon !");
+}
 
+if (total < 15)
+{
+    Console.WriteLine("Perdiste, volve a intentar.");
+}
 
 
 
