@@ -1,42 +1,47 @@
-﻿
-Random dice = new Random();
+﻿Random dice = new Random();
 
-int roll1 = dice.Next(1, 7);
-int roll2 = dice.Next(1, 7);
-int roll3 = dice.Next(1, 7);
+int dado1 = dice.Next(1, 7);
+int dado2 = dice.Next(1, 7);
+int dado3 = dice.Next(1, 7);
 
-int total = roll1 + roll2 + roll3;
+int total = dado1 + dado2 + dado3;
 
-Console.WriteLine($"Dice roll: {roll1} + {roll2} + {roll3} = {total}");
+Console.WriteLine($"Los dados dicen: {dado1} + {dado2} + {dado3} y el total es= {total}");
 
-/*"Si dos dados cualesquiera muestran el mismo valor, 
-se obtendrán dos puntos extra por obtener dobles"*/
-if ((roll1 == roll2) || (roll2 == roll3) || (roll1 == roll3))
+if ((dado1 == dado2) || (dado2 == dado3) || (dado1 == dado3))
 {
-    Console.WriteLine("¡Obtuviste dobles! ¡Bono +2 al total!");
-    total += 2;
+    if ((dado1 == dado2) && (dado2 == dado3))
+    {
+        Console.WriteLine("Triple => 3 dados iguales!  +6 bonus to total!");
+        total += 6;
+    }
+    else
+    {
+        Console.WriteLine("Doble => 2 dados iguales!  +2 bonus to total! ");
+        total += 2;
+    }
+
+    Console.WriteLine($"Tu total incluyendo el bono: {total}");
+}
+
+if (total >= 16)
+{
+    Console.WriteLine("Te ganaste un auto 🚗🚗!");
+}
+else if (total >= 10)
+{
+    Console.WriteLine("Te ganaste una compu 💻💻!");
+}
+else if (total == 7)
+{
+    Console.WriteLine("Ganas un viaje para dos ✈️✈️✈️!");
+}
+else
+{
+    Console.WriteLine("Ganas una bici  🚲🚲🚲 !");
 }
 
 
-// "Si los tres dados que tire muestran el mismo valor, 
-//obtendrá seis puntos extra por obtener un triple"
-if ((roll1 == roll2) && (roll2 == roll3)) 
-{
-    Console.WriteLine("¡Obtuviste triples! ¡Bono +6 al total!");
-    total += 6;
-}
-
-
-
-if (total >= 15)
-{
-    Console.WriteLine("Sos un campeon !");
-}
-
-if (total < 15)
-{
-    Console.WriteLine("Perdiste, volve a intentar.");
-}
 
 
 
